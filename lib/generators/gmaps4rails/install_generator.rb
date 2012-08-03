@@ -12,6 +12,7 @@ module Gmaps4rails
           copy_file "#{source_assets_base_path}gmaps4rails.openlayers.js.coffee", "#{destination_assets_base_path}gmaps4rails.openlayers.js.coffee"
           copy_file "#{source_assets_base_path}gmaps4rails.bing.js.coffee",       "#{destination_assets_base_path}gmaps4rails.bing.js.coffee"
           copy_file "#{source_assets_base_path}gmaps4rails.mapquest.js.coffee",   "#{destination_assets_base_path}gmaps4rails.mapquest.js.coffee"        
+          copy_file "#{source_assets_base_path}gmaps4rails.decarta.js.coffee",   "#{destination_assets_base_path}gmaps4rails.mapquest.js.coffee"        
           copy_file "../../../public/stylesheets/gmaps4rails.css", "app/assets/stylesheets/gmaps4rails.css"
         else
         #I don't copy manifests, kind of useless
@@ -20,6 +21,7 @@ module Gmaps4rails
           copy_file "#{source_js_base_path}gmaps4rails.bing.js",       "#{destination_js_base_path}gmaps4rails.bing.js"
           copy_file "#{source_js_base_path}gmaps4rails.openlayers.js", "#{destination_js_base_path}gmaps4rails.openlayers.js"
           copy_file "#{source_js_base_path}gmaps4rails.mapquest.js",   "#{destination_js_base_path}gmaps4rails.mapquest.js"
+          copy_file "#{source_js_base_path}gmaps4rails.decarta.js",   "#{destination_js_base_path}gmaps4rails.mapquest.js"
           copy_file "../../../public/stylesheets/gmaps4rails.css",     "public/stylesheets/gmaps4rails.css"
         end
       end

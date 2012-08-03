@@ -6,7 +6,8 @@ module Gmaps4rails
     MAPQUEST   = "http://www.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js"                  
     BING       = "http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"
     GOOGLE     = "//maps.google.com/maps/api/js?v=3.8"
-    GOOGLE_EXT = "//google-maps-utility-library-v3.googlecode.com/svn/"    
+    GOOGLE_EXT = "//google-maps-utility-library-v3.googlecode.com/svn/"
+    DECARTA    = Rails.env == "production" ? "deCarta.JS3.min.js" : "deCarta.JS3.js"  # Place in vendors/assets/javascripts
     
     # options is the hash passed to the 'gmaps' helper
     # looks like:
@@ -54,6 +55,7 @@ module Gmaps4rails
                      when "openlayers" then '/javascripts/gmaps4rails/gmaps4rails.openlayers.js'
                      when "mapquest"   then '/javascripts/gmaps4rails/gmaps4rails.mapquest.js'
                      when "bing"       then '/javascripts/gmaps4rails/gmaps4rails.bing.js'
+                     when "decarta"    then '/javascripts/gmaps4rails/gmaps4rails.decarta.js'
                      else                   '/javascripts/gmaps4rails/gmaps4rails.googlemaps.js'
                      end
       end
@@ -65,6 +67,7 @@ module Gmaps4rails
       when "openlayers"  then @js_array << OPENLAYERS
       when "mapquest"    then @js_array << "#{MAPQUEST}?key=#{provider_key}"
       when "bing"        then @js_array << BING
+      when "decarta"     then @js_array << DECARTA
       else #case googlemaps which is the default
         @js_array << "#{GOOGLE}&sensor=false&key=#{provider_key}&libraries=geometry#{google_libraries}&#{google_map_i18n}"
         @js_array << "#{GOOGLE_EXT}tags/infobox/1.1.9/src/infobox_packed.js"                     if custom_infowindow_class
