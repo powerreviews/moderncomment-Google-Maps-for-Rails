@@ -70,9 +70,9 @@ module Gmaps4rails
       when "decarta"     then @js_array << DECARTA
       else #case googlemaps which is the default
         @js_array << "#{GOOGLE}&sensor=false&key=#{provider_key}&libraries=geometry#{google_libraries}&#{google_map_i18n}"
-        @js_array << "#{GOOGLE_EXT}tags/infobox/1.1.9/src/infobox_packed.js"                     if custom_infowindow_class
-        @js_array << "#{GOOGLE_EXT}tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js" if do_clustering
-        @js_array << "#{GOOGLE_EXT}trunk/richmarker/src/richmarker-compiled.js"                  if rich_marker
+        @js_array << "#{GOOGLE_EXT}tags/infobox/1.1.9/src/infobox_packed.js"                      if custom_infowindow_class
+        @js_array << "#{GOOGLE_EXT}tags/markerclustererplus/2.0.9/src/markerclusterer_packed.js"  if do_clustering
+        @js_array << "#{GOOGLE_EXT}trunk/richmarker/src/richmarker-compiled.js"                   if rich_marker
       end
     end
     
