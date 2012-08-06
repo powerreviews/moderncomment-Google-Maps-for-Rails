@@ -9,11 +9,12 @@ class @Gmaps4RailsDecarta extends Gmaps4Rails
     
     @map_options = 
       zoom: 14
-      minZoom: 18
-      maxZoom: 10
+      maxZoom: 19
+      minZoom: 3
       controls:
         CopyrightControl: "bottomRight"
-        PanControl: "topLeft"
+        PanControl: "leftTop"
+        ZoomControl: "leftTop"
     @mergeWithDefault "map_options"
     @markers_conf = {}
     @mergeWithDefault "markers_conf"
@@ -171,12 +172,17 @@ class @Gmaps4RailsDecarta extends Gmaps4Rails
     z = @boundsObject.getIdealCenterAndZoom @serviceObject
     if z.zoom > 0
       @serviceObject.centerOn z.center
-      @serviceObject.zoomTo z.zoom
+      @serviceObject.zoomTo z.zoom, z.center, false
     else
+      # no worries, come back later
+      ref = this
+      setTimeout ->
+        ref.fitBounds.call ref
+      , 100
       @serviceObject.centerOn @boundsObject.getCenter()
   
   centerMapOnUser: ->
-    @serviceObject.centerOn @userLocation
+    #@serviceObject.centerOn @userLocation
     
   extendMapBounds :->
     
